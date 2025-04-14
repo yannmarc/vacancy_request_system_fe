@@ -19,7 +19,6 @@ const getLeaveColumns = () => {
     return [
       { key: "leaveId", label: "Leave ID" },
       { key: "status", label: "Status", format: (status: string) => {
-        console.log(status)
         return <span className={`${baseClasses} ${statusStyles[status]}`}>{status}</span>
         
       }},
@@ -78,6 +77,7 @@ export const LeaveRequestTable = () => {
                 <p className="text-[14px]">View active deposit plans</p>
             </div>
         </div>
+        {/* TODO: refactor columns types */}
         <DynamicTable columns={formattedColumns} data={formattedData} />
     </div>
   );

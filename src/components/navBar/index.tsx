@@ -52,7 +52,7 @@ export const Navbar = () => {
             <div className="border-t px-4 py-2">
               <button
                 className="w-full text-white text-center hover:underline"
-                onClick={() => {toggleActiveUser(user, setActiveUser); console.log("Hello")}}
+                onClick={() => {toggleActiveUser(user, setActiveUser)}}
               >
                 Switch account
               </button>

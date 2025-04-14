@@ -12,8 +12,6 @@ import { RequestDetail } from './pages/requestDetail'
 function App() {
   const {user} = useUser()
 
-  console.log(user)
-
   return (
     <Routes>
      <Route path="/" element={<Layout />}>

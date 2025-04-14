@@ -29,7 +29,6 @@ export const DynamicTable = <T extends object>({ columns, data }: TableProps<T>)
           {data.map((row, i) => (
             <tr key={i} className="border-t hover:bg-gray-50">
               {columns.map((col) => {
-                console.log(col)
                 const rawValue = row[col.key];
                 const cellContent = col.format
                   ? col.format(rawValue, row)

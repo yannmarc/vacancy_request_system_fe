@@ -33,8 +33,7 @@ const saveLeaves = (leaves: LeaveTableItem[]) => {
       return item;
     });
   
-    saveLeaves(updatedLeaves);
-    console.log("❌ Item rejected & merged.");
+    saveLeaves(updatedLeaves)
 }
   
 const rejectItem = (itemId: string) => {
@@ -50,7 +49,6 @@ const rejectItem = (itemId: string) => {
     });
   
     saveLeaves(updatedLeaves);
-    console.log("❌ Item rejected & merged.");
 }
 
   return (

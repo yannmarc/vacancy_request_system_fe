@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { RequestVacationModal } from "../requestVacationModal";
 import { RequestHistoryLeavesModal } from "../requestHistoryModal";
 import moment from "moment";
-import { useUser } from "../../context/userContext";
 
 
 const getLeaveColumns = () => {
@@ -22,9 +21,7 @@ const getLeaveColumns = () => {
     return [
       { key: "leaveId", label: "Leave ID" },
       { key: "status", label: "Status", format: (status: string) => {
-        console.log(status)
-        return <span className={`${baseClasses} ${statusStyles[status]}`}>{status}</span>
-        
+        return <span className={`${baseClasses} ${statusStyles[status]}`}>{status}</span> 
       }},
       {
         key: "dateRequested",
@@ -52,7 +49,6 @@ export const LeaveTable = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [historyModalOpen, setHistoryModalOpen] = useState<boolean>(false);
   const [leaves, setLeaves] = useState<LeaveTableItem[]>([]);
-  const { user } = useUser();
 
   useEffect(() => {
     setLeaves(getStoredLeaves());
@@ -76,8 +72,6 @@ export const LeaveTable = () => {
     return row;
   });
 
-  console.log(user)
-
   return (
     <div className="bg-white rounded-tl-2xl rounded-tr-2xl w-[70%]">
         <div className="py-5 px-5 flex  justify-between">
@@ -90,6 +84,7 @@ export const LeaveTable = () => {
                 <button className="!px-[10px] text-white !bg-blue-500 rounded-[6px]" onClick={() => setModalOpen(true)}>Request vacation</button>
             </div>}
         </div>
+        {/* TODO: refactor columns types */}
         <DynamicTable columns={formattedColumns} data={formattedData} />
         <RequestVacationModal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
         <RequestHistoryLeavesModal isOpen={historyModalOpen} onClose={() => setHistoryModalOpen(false)}/>
